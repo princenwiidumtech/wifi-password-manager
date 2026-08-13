@@ -30,16 +30,16 @@ def view_wifi():
 
     conn.close()
 
-    if not rows:
-        print("No Wi-Fi password saved.")
-        return
+    wifi_list = []
 
     for row in rows:
         wifi_id, ssid, encrypted_password = row
-
         password = decrypt_password(encrypted_password)
 
-        print(f"ID: {wifi_id}")
-        print(f"SSID: {ssid}")
-        print(f"Password: {password}")
-        print("-" * 30)
+        wifi_list.append({
+            "id": wifi_id,
+            "ssid": ssid,
+            "password": password
+        })
+
+    return wifi_list
