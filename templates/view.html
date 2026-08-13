@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>View Wi-Fi</title>
+    <title>Saved Wi-Fi</title>
 </head>
-
 <body>
 
-    <h1>Saved Wi-Fi</h1>
+<h1>Saved Wi-Fi</h1>
 
-    <p>Wi-Fi information will appear here.</p>
+{% if wifi_list %}
+    {% for wifi in wifi_list %}
+        <div>
+            <p><strong>ID:</strong> {{ wifi.id }}</p>
+            <p><strong>Wi-Fi Name:</strong> {{ wifi.ssid }}</p>
+            <p><strong>Password:</strong> {{ wifi.password }}</p>
+            <hr>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No Wi-Fi password saved.</p>
+{% endif %}
 
-    <a href="/">Back Home</a>
+<a href="/">Back Home</a>
 
 </body>
 </html>
