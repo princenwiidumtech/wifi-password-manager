@@ -1,5 +1,9 @@
 import sqlite3
+import os
 from encryption import encrypt_password, decrypt_password
+
+# Create database folder if it doesn't exist
+os.makedirs("database", exist_ok=True)
 
 DB_PATH = "database/wifi.db"
 
