@@ -7,6 +7,23 @@ os.makedirs("database", exist_ok=True)
 
 DB_PATH = "database/wifi.db"
 
+def init_database():
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS wifi (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        ssid TEXT NOT NULL,
+        password TEXT NOT NULL
+    )
+    """)
+
+    conn.commit()
+    conn.close()
+
+
+init_database()
 
 def save_wifi(ssid, password):
     conn = sqlite3.connect(DB_PATH)
