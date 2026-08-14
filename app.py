@@ -12,12 +12,21 @@ def home():
 @app.route("/save", methods=["GET", "POST"])
 def save():
     if request.method == "POST":
-        ssid = request.form["ssid"]
-        password = request.form["password"]
+        ssid = request.form.get("ssid")
+        password = request.form.get("password")
 
         save_wifi(ssid, password)
 
-        return render_template("save.html")
+        return """
+        <h1>Wi-Fi Saved Successfully!</h1>
+        <p>Your Wi-Fi has been saved.</p>
+
+        <a href="/save">Save Another Wi-Fi</a>
+        <br><br>
+        <a href="/view">View Saved Wi-Fi</a>
+        <br><br>
+        <a href="/">Back Home</a>
+        """
 
     return render_template("save.html")
 
@@ -30,4 +39,4 @@ def view():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=10000)
