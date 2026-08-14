@@ -37,10 +37,13 @@ def save_wifi(ssid, password):
     )
 
     conn.commit()
+
+    print("Saved:", ssid)
+    print("Rows in database:", cursor.rowcount)
+
     conn.close()
 
     print("Wi-Fi saved successfully!")
-
 
 def view_wifi():
     conn = sqlite3.connect(DB_PATH)
