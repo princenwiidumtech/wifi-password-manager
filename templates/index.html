@@ -1,16 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Wi-Fi Password Manager</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-    <h1>Wi-Fi Password Manager</h1>
+<nav>
 
-<a href="/save">Save Wi-Fi</a>
-<br><br>
-<a href="/view">View Wi-Fi</a>
+    <div class="logo">
+        Wi-Fi Manager
+    </div>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/save">Save</a>
+        <a href="/view">View</a>
+    </div>
+
+</nav>
+
+
+<div class="container">
+
+    <div class="hero">
+
+        <h1>Wi-Fi Password Manager</h1>
+
+        <p>
+            Securely save and manage your Wi-Fi passwords.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Save a Wi-Fi Password</h2>
+
+        <p>
+            Store your Wi-Fi name and password securely.
+        </p>
+
+        <br>
+
+        <a href="/save" class="btn">
+            Save Wi-Fi
+        </a>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>View Saved Wi-Fi</h2>
+
+        <p>
+            View the Wi-Fi passwords you have already saved.
+        </p>
+
+        <br>
+
+        <a href="/view" class="btn">
+            View Wi-Fi
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="footer">
+
+    Wi-Fi Password Manager
+
+</div>
 
 </body>
+
 </html>
