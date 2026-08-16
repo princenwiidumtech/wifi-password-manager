@@ -1,26 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Saved Wi-Fi</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
 </head>
+
+
 <body>
 
-<h1>Saved Wi-Fi</h1>
+<nav>
 
-{% if wifi_list %}
-    {% for wifi in wifi_list %}
-        <div>
-            <p><strong>ID:</strong> {{ wifi.id }}</p>
-            <p><strong>Wi-Fi Name:</strong> {{ wifi.ssid }}</p>
-            <p><strong>Password:</strong> {{ wifi.password }}</p>
-            <hr>
+    <div class="logo">
+        Wi-Fi Manager
+    </div>
+
+    <div>
+
+        <a href="/">Home</a>
+
+        <a href="/save">Save</a>
+
+        <a href="/view">View</a>
+
+    </div>
+
+</nav>
+
+
+<div class="container">
+
+    <div class="hero">
+
+        <h1>Saved Wi-Fi</h1>
+
+        <p>
+            Your saved Wi-Fi networks
+        </p>
+
+    </div>
+
+
+    {% if wifi_list %}
+
+        {% for wifi in wifi_list %}
+
+            <div class="wifi-card">
+
+                <h2>
+                    {{ wifi.ssid }}
+                </h2>
+
+                <p>
+                    <strong>ID:</strong>
+                    {{ wifi.id }}
+                </p>
+
+                <p>
+                    <strong>Password:</strong>
+                    {{ wifi.password }}
+                </p>
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="card">
+
+            <p>
+                No Wi-Fi password saved yet.
+            </p>
+
         </div>
-    {% endfor %}
-{% else %}
-    <p>No Wi-Fi password saved.</p>
-{% endif %}
 
-<a href="/">Back Home</a>
+    {% endif %}
+
+
+    <a href="/save" class="btn">
+        Save Another Wi-Fi
+    </a>
+
+</div>
+
+
+<div class="footer">
+
+    Wi-Fi Password Manager
+
+</div>
 
 </body>
+
 </html>
