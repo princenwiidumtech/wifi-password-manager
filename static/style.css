@@ -58,7 +58,7 @@ nav a:hover {
 .card {
     background: #1e293b;
     padding: 25px;
-    border-radius: 15px;
+    border-radius: 15px
     margin-bottom: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
@@ -124,3 +124,33 @@ label {
     margin-top: 50px;
     padding: 20px;
   }
+
+/* Wi-Fi Cards */
+
+.wifi-grid {
+    display: grid;
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.wifi-card {
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 20px;
+    border-left: 6px solid #38bdf8;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.wifi-card h2 {
+    margin-top: 0;
+    font-size: 28px;
+}
+
+.wifi-card p {
+    font-size: 18px;
+    margin: 15px 0;
+}
+
+.wifi-card strong {
+    color: #38bdf8;
+}
