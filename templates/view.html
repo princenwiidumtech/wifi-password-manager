@@ -83,5 +83,29 @@
     Wi-Fi Password Manager
 </footer>
 
+<script>
+
+function togglePassword(button) {
+
+    const password = button.previousElementSibling;
+
+    if (password.textContent === "••••••••••") {
+
+        password.textContent = password.dataset.password;
+
+        button.textContent = "Hide";
+
+    } else {
+
+        password.textContent = "••••••••••";
+
+        button.textContent = "Show";
+
+    }
+
+}
+
+</script>
+    
 </body>
 </html>
