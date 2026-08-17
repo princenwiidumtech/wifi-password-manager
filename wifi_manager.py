@@ -67,3 +67,17 @@ def view_wifi():
         })
 
     return wifi_list
+
+def delete_wifi(wifi_id):
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "DELETE FROM wifi WHERE id = ?",
+        (wifi_id,)
+    )
+
+    conn.commit()
+    conn.close()
+
+    print("Wi-Fi deleted successfully!")
