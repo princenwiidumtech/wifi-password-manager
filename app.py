@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect
 from wifi_manager import save_wifi, view_wifi, delete_wifi, update_wifi
-import sqlite3
 
 app = Flask(__name__)
 
