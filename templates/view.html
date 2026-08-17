@@ -59,6 +59,15 @@
     </button>
                     </p>
 
+                    <a
+    href="/delete/{{ wifi.id }}"
+    class="delete-button"
+    onclick="return confirm('Are you sure you want to delete this Wi-Fi?');">
+
+    Delete Wi-Fi
+
+                    </a>
+            
                 </div>
 
             {% endfor %}
