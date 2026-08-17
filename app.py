@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
-from wifi_manager import save_wifi, view_wifi, delete_wifi
+from wifi_manager import save_wifi, view_wifi, delete_wifi, update_wifi
+import splite3
 
 app = Flask(__name__)
 
@@ -30,7 +31,6 @@ def save():
 
     return render_template("save.html")
 
-
 @app.route("/view")
 def view():
     wifi_list = view_wifi()
@@ -40,6 +40,30 @@ def view():
 @app.route("/delete/<int:wifi_id>")
 def delete(wifi_id):
     delete_wifi(wifi_id)
+
+    return redirect("/view")
+
+@app.route("/edit/<int:wifi_id>")
+def edit(wifi_id):
+    conn = sqlite3.connect("database/wifi.db")
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "SELECT id, ssid FROM wifi WHERE id = ?",
+        (wifi_id,)
+    )
+
+    wifi = cursor.fetchone()
+
+    conn.close()
+
+    return render_template("edit.html", wifi=wifi)
+@app.route("/update/<int:wifi_id>", methods=["POST"])
+def update(wifi_id):
+    ssid = request.form["ssid"]
+    password = request.form["password"]
+
+    update_wifi(wifi_id, ssid, password)
 
     return redirect("/view")
 
