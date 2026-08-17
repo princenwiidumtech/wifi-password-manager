@@ -81,3 +81,19 @@ def delete_wifi(wifi_id):
     conn.close()
 
     print("Wi-Fi deleted successfully!")
+
+def update_wifi(wifi_id, ssid, password):
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+
+    encrypted_password = encrypt_password(password)
+
+    cursor.execute(
+        "UPDATE wifi SET ssid = ?, password = ? WHERE id = ?",
+        (ssid, encrypted_password, wifi_id)
+    )
+
+    conn.commit()
+    conn.close()
+
+    print("Wi-Fi updated successfully!")
