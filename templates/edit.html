@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Wi-Fi</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        Wi-Fi Manager
+    </div>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/save">Save</a>
+        <a href="/view">View</a>
+    </div>
+
+</nav>
+
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>Edit Wi-Fi</h1>
+
+        <br>
+
+        <form method="POST"
+              action="/update/{{ wifi[0] }}">
+
+            <label>
+                Wi-Fi Name
+            </label>
+
+            <input
+                type="text"
+                name="ssid"
+                value="{{ wifi[1] }}"
+                required
+            >
+
+
+            <label>
+                New Password
+            </label>
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter new password"
+                required
+            >
+
+
+            <button
+                type="submit"
+                class="btn">
+
+                Update Wi-Fi
+
+            </button>
+
+        </form>
+
+        <br>
+
+        <a href="/view">
+            Cancel
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="footer">
+
+    Wi-Fi Password Manager
+
+</div>
+
+</body>
+
+</html>
