@@ -60,14 +60,47 @@
                     </p>
 
                     <a
+    href="/edit/{{ wifi.id }}"
+    class="edit-button">
+
+    Edit Wi-Fi
+
+                    </a>
+
+                    <p>
+    <strong>Password:</strong>
+
+    <span class="password" data-password="{{ wifi.password }}">
+        ••••••••••
+    </span>
+
+    <button
+        type="button"
+        class="show-password"
+        onclick="togglePassword(this)">
+
+        Show
+
+    </button>
+</p>
+
+<a
+    href="/edit/{{ wifi.id }}"
+    class="edit-button">
+
+    Edit Wi-Fi
+
+</a>
+
+<a
     href="/delete/{{ wifi.id }}"
     class="delete-button"
     onclick="return confirm('Are you sure you want to delete this Wi-Fi?');">
 
     Delete Wi-Fi
 
-                    </a>
-            
+</a>
+                    
                 </div>
 
             {% endfor %}
