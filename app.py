@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request
-from wifi_manager import save_wifi, view_wifi
+from flask import Flask, render_template, request, redirect
+from wifi_manager import save_wifi, view_wifi, delete_wifi
 
 app = Flask(__name__)
 
@@ -37,6 +37,11 @@ def view():
 
     return render_template("view.html", wifi_list=wifi_list)
 
+@app.route("/delete/<int:wifi_id>")
+def delete(wifi_id):
+    delete_wifi(wifi_id)
+
+    return redirect("/view")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
