@@ -27,6 +27,19 @@
 
     <p class="subtitle">Your saved Wi-Fi networks</p>
 
+    <form class="search-form" method="GET" action="/view">
+
+    <input
+        type="text"
+        name="search"
+        placeholder="Search Wi-Fi name..."
+    >
+
+    <button type="submit">
+        Search
+    </button>
+
+    </form>
 
     {% if wifi_list %}
 
