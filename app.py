@@ -32,7 +32,15 @@ def save():
 
 @app.route("/view")
 def view():
+    search = request.args.get("search", "").lower()
+
     wifi_list = view_wifi()
+
+    if search:
+        wifi_list = [
+            wifi for wifi in wifi_list
+            if search in wifi["ssid"].lower()
+        ]
 
     return render_template("view.html", wifi_list=wifi_list)
 
