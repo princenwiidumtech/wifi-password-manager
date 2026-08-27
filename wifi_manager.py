@@ -105,3 +105,24 @@ def update_wifi(wifi_id, ssid, password):
     conn.close()
 
     print("Wi-Fi updated successfully!")
+
+def create_user(username, password):
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+
+    hashed_password = generate_password_hash(password)
+
+    try:
+        cursor.execute(
+            "INSERT INTO users (username, password) VALUES (?, ?)",
+            (username, hashed_password)
+        )
+
+        conn.commit()
+        return True
+
+    except sqlite3.IntegrityError:
+        return False
+
+    finally:
+        conn.close()
