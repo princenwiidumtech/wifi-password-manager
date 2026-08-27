@@ -13,26 +13,25 @@ def init_database():
     cursor = conn.cursor()
 
     cursor.execute("""
-CREATE TABLE IF NOT EXISTS wifi (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    ssid TEXT NOT NULL,
-    password TEXT NOT NULL
-)
-""")
+    CREATE TABLE IF NOT EXISTS wifi (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        ssid TEXT NOT NULL,
+        password TEXT NOT NULL
+    )
+    """)
 
-cursor.execute("""
-CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT NOT NULL UNIQUE,
-    password TEXT NOT NULL
-)
-""")
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL UNIQUE,
+        password TEXT NOT NULL
+    )
+    """)
 
     conn.commit()
     conn.close()
 
-
-init_database()
+def init_database():
 
 def save_wifi(ssid, password):
     conn = sqlite3.connect(DB_PATH)
