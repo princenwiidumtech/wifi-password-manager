@@ -31,6 +31,8 @@ CREATE TABLE IF NOT EXISTS users (
     conn.commit()
     conn.close)
 
+init_database()
+
 def save_wifi(ssid, password):
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
